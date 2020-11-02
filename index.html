@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPIO Vezérlőpult</title>
+    <style>
+body {
+	background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+
+
+
+
+p3 {
+  font-size: 15px;
+
+  text-align: center;
+}
+
+p1 {
+  font-size: 35px;
+  position:relative;
+  top: 5px;
+  left: -15px;
+}
+p {
+  font-size: 25px;
+}
+    </style>
+</head>
+
+
+<body>
+    <p1 style="font-family:verdana">『GPIO Dashboard』 </p1> 
+    
+    <p style="font-family:'Courier New'">┌ GIPO OUT (+5V -GND)</p>
+    <p style="font-family:'Courier New'">├ GPIO 4 ----------------ᒣ</p>
+    <button type="button" style="font-family:'Courier New'" class ="button button1" id="state4" onclick="LEDOn()" >Be</button>
+    <button type="button" style="font-family:'Courier New'" class ="button button2" id="state4" onclick="LEDOff()" >Ki</button>
+
+    <p style="font-family:'Courier New'">├ GPIO 5 ----------------ᒣ</p>
+    <button type="button" style="font-family:'Courier New'" class ="button button1" id="state5" onclick="LEDOn()" >Be</button>
+    <button type="button" style="font-family:'Courier New'" class ="button button2" id="state5" onclick="LEDOff()" >Ki</button>
+
+    <p style="font-family:'Courier New'">├ GPIO 6 ----------------ᒣ</p>
+    <button type="button" style="font-family:'Courier New'" class ="button button1" id="state6" onclick="LEDOn()" >Be</button>
+    <button type="button" style="font-family:'Courier New'" class ="button button2" id="state6" onclick="LEDOff()" >Ki</button>
+
+    <p style="font-family:'Courier New'">├ GPIO 7 ----------------ᒣ</p>
+    <button type="button" style="font-family:'Courier New'" class ="button button1" id="state7" onclick="LEDOn()" >Be</button>
+    <button type="button" style="font-family:'Courier New'" class ="button button2" id="state7" onclick="LEDOff()" >Ki</button>
+    <p></p>
+    <p3 style="font-family:'Courier New'"> © This project was created by Ákos Óvári.</p3>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect(); //load socket.io-client and connect to the host
+        function LEDOn() {
+            socket.emit("state", 1); //send button state to server
+        }
+
+        function LEDOff() {
+            socket.emit("state", 0); //send button state to server
+        }
+    </script>
+
+
+
+</html>
+</body>
+<style>
+    .button {
+        width: 220px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+        z-index: 0;
+        border-radius: 10px;
+        font-size: 25px;
+    }
+    
+
+
+    .button1 {
+      background-color: rgba(73, 169, 233, 0.63);
+      color: black;
+      border: 1px solid #26b7f1;
+      position: relative;
+        left: 0px;
+        top: 0px;
+    }
+
+    .button1:active {
+      background-color: rgba(122, 122, 122, 0.452);
+      color: black;
+      border: 1px solid #267ef100;
+      animation-duration: 1s;
+      position: relative;
+        left: 0px;
+        top: 3px;
+
+    }
+    .button2:active {
+      background-color: rgba(122, 122, 122, 0.452);
+      color: black;
+      border: 1px solid #267ef100;
+      position: relative;
+        left: 0px;
+        top:  13px;
+    }
+    .button2 {
+      background-color: rgba(207, 65, 65, 0.534);
+      color: black;
+      border: 1px solid #bd4c2a;
+      position: relative;
+        left: 0px;
+        top: 10px;
+    }
+
+    </style>
+</html>
